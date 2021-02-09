@@ -3,7 +3,11 @@ if(process.env.NODE_ENV !== 'production'){
 }
 const express = require('express')
 const mongoose = require('mongoose')
+const fetch = require('node-fetch')
+const Meme = require('./models/meme')
 const app = express()
+
+app.use(express.urlencoded({extended: false}))
 
 mongoose.connect(process.env.DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 const db = mongoose.connection 
@@ -13,8 +17,29 @@ db.once('open', ()=> console.log('Connected to Mongoose'))
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 
-app.get('/', (req, res) =>{
-    res.send('Crio')
+const c = 'https://hdqwalls.com/wallpapers/best-nature-image.jpg'
+
+app.get('/', async(req, res) =>{
+    try{
+        const memes = await Meme.find({}).sort({createdAt: 'desc'}).limit(100)
+        res.render('index', {memes: memes})
+    } catch{
+        res.redirect('/')
+    }
+    
+})
+
+app.post('/', async(req, res) =>{
+    let meme = new Meme()
+    meme.name = req.body.name
+    meme.caption = req.body.caption
+    meme.link = req.body.link
+    await meme.save()
+    res.redirect('/')
+})
+
+app.get('/meme', async(req, res) => {
+    res.render('meme', {c:c})
 })
 
 app.listen(process.env.PORT || 3000)
