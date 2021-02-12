@@ -27,6 +27,10 @@
             <div style = "margin: 5px"><%= meme.caption%></div>
             <div style = "margin: 5px">
             <a href = <%= meme.link%>><img src = <%= meme.link%> height="200" width ="200" ></a>
+            <form action = "/<%= meme.id%>?_method=DELETE" method = "POST">
+                <button type = "submit">Delete</button>
+            </form>
+            
             </div>
         </div>
     <% })%>

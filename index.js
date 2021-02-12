@@ -5,9 +5,11 @@ const express = require('express')
 const mongoose = require('mongoose')
 const fetch = require('node-fetch')
 const Meme = require('./models/meme')
+const methodOverride = require('method-override')
 const app = express()
 
 app.use(express.urlencoded({extended: false}))
+app.use(methodOverride('_method'))
 
 mongoose.connect(process.env.DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 const db = mongoose.connection 
@@ -35,6 +37,11 @@ app.post('/', async(req, res) =>{
     meme.caption = req.body.caption
     meme.link = req.body.link
     await meme.save()
+    res.redirect('/')
+})
+
+app.delete('/:id', async(req, res)=>{
+    await Meme.findByIdAndDelete(req.params.id)
     res.redirect('/')
 })
 
