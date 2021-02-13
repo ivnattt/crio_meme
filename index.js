@@ -1,5 +1,6 @@
 if(process.env.NODE_ENV !== 'production'){
-    require('dotenv').config()
+    //require('dotenv').config()
+    DB_URL='mongodb://localhost/crio'
 }
 const express = require('express')
 const mongoose = require('mongoose')
@@ -11,7 +12,7 @@ const app = express()
 app.use(express.urlencoded({extended: false}))
 app.use(methodOverride('_method'))
 
-mongoose.connect(process.env.DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.DB_URL || DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 const db = mongoose.connection 
 db.on('error', error => console.log(error))
 db.once('open', ()=> console.log('Connected to Mongoose'))
@@ -49,4 +50,4 @@ app.get('/meme', async(req, res) => {
     res.render('meme', {c:c})
 })
 
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 8081)
