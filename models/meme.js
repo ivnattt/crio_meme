@@ -3,15 +3,15 @@ const mongoose = require('mongoose')
 const memeSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        //required: true
     },
     caption: {
         type: String,
-        required: true
+        //required: true
     },
     link: {
         type: String,
-        required: true
+        //required: true
     },
     createdAt: {
         type: Date,
