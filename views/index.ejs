@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
 </head>
-<body>
+<!-- <body style = "background-color: rgb(66, 61, 61);"> -->
+<body style = "background-color: white;">
     <h1 class="text-center"><kbd>XMEME BY TANVI</kbd></h1>
 
     <div style = "background-color: rgb(182, 178, 178); border: 5px solid black; margin: 40px; padding: 20px">    
@@ -28,11 +29,11 @@
             <button type="submit" class = "btn btn-info">SUBMIT</button>
         </form>
     </div> 
-    <div style = " margin: 40px">
-        <h2 class="text-center"><kbd>MEMES APPEAR HERE</kbd></h2>
+    <h2 class="text-center"><kbd>MEMES APPEAR HERE</kbd></h2>
+    <div style = " margin: 10px"   >
         
         <% memes.forEach(meme=>{ %>
-            <div class="col-md-8 offset-md-2" style = "margin-top: 50px">
+            <div class="col-md-8 offset-md-2" style = "margin-top: 50px; padding-bottom: 20px; border: 5px solid black; background-color:rgb(182, 178, 178)" >
                 <div style = "margin: 5px"><h3><%= meme.name%></h3></div>
                 <div style = "margin: 5px"><b><%= meme.createdAt.toLocaleDateString() %></b></div>
                 <div style = "margin: 5px"><%= meme.caption%></div>
