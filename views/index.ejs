@@ -32,12 +32,12 @@
         <h2 class="text-center"><kbd>MEMES APPEAR HERE</kbd></h2>
         
         <% memes.forEach(meme=>{ %>
-            <div >
+            <div class="col-md-8 offset-md-2" style = "margin-top: 50px">
                 <div style = "margin: 5px"><h3><%= meme.name%></h3></div>
                 <div style = "margin: 5px"><b><%= meme.createdAt.toLocaleDateString() %></b></div>
                 <div style = "margin: 5px"><%= meme.caption%></div>
                 <div style = "margin: 5px">
-                <a href = <%= meme.link%>><img src = <%= meme.link%> height="300" width ="300" style="border:5px double black; margin-top: 20px" class="rounded" ></a>
+                <a href = <%= meme.link%>><img src = <%= meme.link%> height="250" width ="250" style="border:5px double black; margin-top: 20px" class="rounded" ></a>
                 </div>
                 <a href= "/edit/<%= meme.id%>" class = "btn btn-warning">EDIT</a>
 
