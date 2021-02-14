@@ -8,7 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-    <div style = "background-color: bisque; border: 5px solid black; margin: 40px; padding: 20px">    
+    <h2 class="text-center"><kbd> <%= meme.name%>'s Meme</kbd></h2>
+    <div style = "background-color: rgb(182, 178, 178); border: 5px solid black; margin: 40px; padding: 20px">    
         <form action = "/<%= meme.id%>?_method=PUT" method = "POST">
             <div class = "form-group">
                 <label for = "name" class = "form" >Name </label>
@@ -22,8 +23,15 @@
                 <label for = "link" class = "form">Link</label>
                 <input value = "<%= meme.link%>" type="text" name = "link" class = "form-control">
             </div>
+
+            <!-- A preview of the meme that already exists -->
+
+            <div style = "margin: 5px">
+                <h3 style = "text-decoration: underline">Meme Preview</h3>
+                <a href = <%= meme.link%>><img src = <%= meme.link%> height="250" width ="250" style="border:5px double black; margin-top: 20px" class="rounded" ></a>
+            </div>
     
-            <button type="submit" class = "btn btn-primary">SUBMIT</button>
+            <button type="submit" class = "btn btn-info">CONFIRM CHANGES</button>
         </form>
     </div> 
 </body>

@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
 </head>
-<!-- <body style = "background-color: rgb(66, 61, 61);"> -->
-<body style = "background-color: white;">
+
+<body >
     <h1 class="text-center"><kbd>XMEME BY TANVI</kbd></h1>
 
     <div style = "background-color: rgb(182, 178, 178); border: 5px solid black; margin: 40px; padding: 20px">    
         <form action = "/" method = "POST">
             <div class = "form-group">
                 <label for = "name" class = "form" >Name </label>
-                <input type="text" name = "name" class = "form-control">
+                <input required type="text" name = "name" class = "form-control">
             </div>
             <div class = "form-group">
                 <label for = "caption" class = "form">Caption </label>
@@ -23,12 +23,16 @@
             </div>
             <div class = "form-group">
                 <label for = "link" class = "form">Link</label>
-                <input type="text" name = "link" class = "form-control">
+                <input required type="text" name = "link" class = "form-control">
             </div>
 
             <button type="submit" class = "btn btn-info">SUBMIT</button>
         </form>
     </div> 
+
+    <!-- End of New Meme Post Form -->
+    <!-- Memes appear in reverse order - Latest on top -->
+
     <h2 class="text-center"><kbd>MEMES APPEAR HERE</kbd></h2>
     <div style = " margin: 10px"   >
         
@@ -36,7 +40,7 @@
             <div class="col-md-8 offset-md-2" style = "margin-top: 50px; padding-bottom: 20px; border: 5px solid black; background-color:rgb(228, 222, 222)" >
                 <div style = "margin: 5px"><h3><%= meme.name%></h3></div>
                 <div style = "margin: 5px"><b><%= meme.createdAt.toLocaleDateString() %></b></div>
-                <div style = "margin: 5px"><%= meme.caption%></div>
+                <div style = "margin: 5px"><h5><%= meme.caption%></h5></div>
                 <div style = "margin: 5px">
                 <a href = <%= meme.link%>><img src = <%= meme.link%> height="250" width ="250" style="border:5px double black; margin-top: 20px" class="rounded" ></a>
                 </div>
