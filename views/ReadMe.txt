@@ -1,4 +1,3 @@
-Hi 
 This is a meme posting and display page. 
 
 The page begins with a form with 3 fields, namely:
